@@ -58,7 +58,10 @@
         "publish": {
             "provider": "github",
             "owner": "wxn0brP",
-            "repo": "sol-mail-client"
+            "repo": "sol-mail-client",
+            "releaseType": "release",
+            "draft": false,
+            "prerelease": false
         }
     },
     "engines": {
