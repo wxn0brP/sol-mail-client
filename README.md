@@ -2,6 +2,8 @@
 
 A minimalist desktop mail client built with Electron that automatically discovers and connects to a Sol Mail server on your local network.
 
+[Screenshots](./screenshots.md)
+
 ## Overview
 
 Sol Mail Client automatically scans your local network to find the Sol Mail server, typically running on port `19851`.  
