@@ -1,0 +1,46 @@
+name: Build Electron
+
+on:
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+
+concurrency:
+  group: build-electron-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-electron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v5
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22.x"
+
+      - name: 📦 Install dependencies
+        run: |
+          npm install -g typescript tsc-alias
+          npm install
+
+      - name: ⚙️ Compile TypeScript
+        run: |
+          npm run build
+
+      - name: 🍷 Setup Wine & base Linux tools
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install -y wine32 wine64 libarchive-tools fakeroot
+
+      - name: 🚀 Full build and publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx electron-builder --publish always --win --linux

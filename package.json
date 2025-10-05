@@ -1,0 +1,67 @@
+{
+    "name": "sol-mail",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "tsc && tsc-alias",
+        "start:client": "electron .",
+        "electron:build": "electron-builder",
+        "electron:build-win": "electron-builder build --win",
+        "electron:build-linux": "electron-builder build --linux",
+        "electron:publish": "electron-builder --publish always",
+        "electron:publish-win": "electron-builder --publish always --win",
+        "electron:publish-linux": "electron-builder --publish always --linux",
+        "electron:build-zip": "electron-builder build --win zip --linux zip",
+        "electron:build-mac": "electron-builder build --mac",
+        "electron:publish-mac": "electron-builder --publish always --mac",
+        "electron:dist": "electron-packager ."
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "electron": "^38.1.2",
+        "tsc-alias": "*",
+        "typescript": "*"
+    },
+    "author": {
+        "name": "wxn0brP",
+        "email": "toja.filiper@gmail.com"
+    },
+    "homepage": "https://github.com/wxn0brP/sol-mail",
+    "build": {
+        "appId": "com.wxn0brp.solmail",
+        "productName": "Sol Mail",
+        "directories": {
+            "buildResources": "public",
+            "output": "release"
+        },
+        "files": [
+            "dist/**/*",
+            "public/**/*"
+        ],
+        "win": {
+            "target": [
+                "nsis",
+                "zip"
+            ],
+            "icon": "public/favicon.ico"
+        },
+        "linux": {
+            "target": [
+                "tar.gz"
+            ],
+            "icon": "public/favicon.png",
+            "category": "Application"
+        },
+        "publish": {
+            "provider": "github",
+            "owner": "wxn0brP",
+            "repo": "sol-mail-client"
+        }
+    },
+    "engines": {
+        "node": ">=22.0.0"
+    }
+}
