@@ -1,8 +1,15 @@
 import { findServer } from "./findPort";
-import { app, port, waitToStart } from "@wxn0brp/zhiva-base-lib/server";
+import { app, oneWindow, port, waitToStart } from "@wxn0brp/zhiva-base-lib/server";
 import { openWindow } from "@wxn0brp/zhiva-base-lib/openWindow";
 import { downloadFile } from "./download";
+
 const serverIP = await findServer(19851);
+if (!serverIP) {
+    app.static("public");
+    await oneWindow();
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    process.exit(0);
+}
 
 const baseUrl = "http://" + serverIP + ":19851/";
 app.setOrigin([baseUrl])
