@@ -1,10 +1,11 @@
 {
-    "cmd": "yarn build && electron . --dev",
+    "cmd": "tsc --noEmit",
     "watch": [
         "src"
     ],
     "restart_cmd": "clear",
     "events": {
-        "rs": "clear"
+        "rs": "clear",
+        "r": "bun run src/index.ts"
     }
 }

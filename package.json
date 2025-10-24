@@ -1,70 +1,21 @@
 {
     "name": "sol-mail",
     "version": "0.0.2",
-    "main": "dist/index.js",
+    "main": "src/index.ts",
     "license": "MIT",
-    "private": true,
     "type": "module",
     "scripts": {
-        "build": "tsc && tsc-alias",
-        "start:client": "electron .",
-        "electron:build": "electron-builder",
-        "electron:build-win": "electron-builder build --win",
-        "electron:build-linux": "electron-builder build --linux",
-        "electron:publish": "electron-builder --publish always",
-        "electron:publish-win": "electron-builder --publish always --win",
-        "electron:publish-linux": "electron-builder --publish always --linux",
-        "electron:build-zip": "electron-builder build --win zip --linux zip",
-        "electron:build-mac": "electron-builder build --mac",
-        "electron:publish-mac": "electron-builder --publish always --mac",
-        "electron:dist": "electron-packager ."
+        "start": "bun run src/index.ts"
     },
     "devDependencies": {
-        "@types/node": "*",
-        "electron": "^38.1.2",
-        "tsc-alias": "*",
+        "@types/bun": "*",
+        "@wxn0brp/zhiva-base-lib": "github:wxn0brP/Zhiva-base-lib",
         "typescript": "*"
     },
-    "author": {
-        "name": "wxn0brP",
-        "email": "toja.filiper@gmail.com"
+    "author": "wxn0brP",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wxn0brP/sol-mail-client.git"
     },
-    "homepage": "https://github.com/wxn0brP/sol-mail",
-    "build": {
-        "appId": "com.wxn0brp.solmail",
-        "productName": "Sol Mail",
-        "directories": {
-            "buildResources": "public",
-            "output": "release"
-        },
-        "files": [
-            "dist/**/*",
-            "public/**/*"
-        ],
-        "win": {
-            "target": [
-                "nsis",
-                "zip"
-            ],
-            "icon": "public/favicon.ico"
-        },
-        "linux": {
-            "target": [
-                "tar.gz"
-            ],
-            "icon": "public/favicon.png",
-            "category": "Application"
-        },
-        "publish": {
-            "provider": "github",
-            "owner": "wxn0brP",
-            "repo": "sol-mail-client",
-            "releaseType": "release",
-            "draft": false,
-            "prerelease": false
-        }
-    },
-    "engines": {
-        "node": ">=22.0.0"
-    }
+    "homepage": "https://github.com/wxn0brP/sol-mail"
 }

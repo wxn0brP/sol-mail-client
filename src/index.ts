@@ -1,50 +1,30 @@
-import { app, BrowserWindow, dialog } from "electron";
 import { findServer } from "./findPort";
+import { app, port, waitToStart } from "@wxn0brp/zhiva-base-lib/server";
+import { openWindow } from "@wxn0brp/zhiva-base-lib/openWindow";
+import { downloadFile } from "./download";
+const serverIP = await findServer(19851);
 
-let mainWin: BrowserWindow = null;
+const baseUrl = "http://" + serverIP + ":19851/";
+app.setOrigin([baseUrl])
 
-function createWindow(url: string): BrowserWindow {
-    const win = new BrowserWindow({
-        width: 1200,
-        height: 800,
-        webPreferences: {
-            contextIsolation: true,
-            devTools: true,
-            backgroundThrottling: false,
-        },
-        resizable: true,
-        title: "Sol Mail",
-        icon: import.meta.dirname + "/../public/favicon.png",
-    });
-
-    win.webContents.setWindowOpenHandler((details) => {
-        win.webContents.session.downloadURL(details.url);
-        return { action: "deny" };
-    });
-
-    win.loadURL(url);
-    win.maximize();
-
-    return win;
-}
-
-app.whenReady().then(async () => {
-    const serverIP = await findServer(19851);
-    if (!serverIP) {
-        dialog.showErrorBox("Error", "Could not find server");
-        app.quit();
-        return;
+app.get("/download", (req, res) => {
+    const path = req.query.path;
+    if (!path || !req.query.token) {
+        res.status(400);
+        return { err: true, msg: "Bad request" };
     }
-    const server = "http://" + serverIP + ":19851";
-    mainWin = createWindow(server);
-
-    app.on("activate", () => {
-        if (mainWin === null) createWindow(server);
-    });
-});
-
-app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-        app.quit();
+    if (!path.startsWith(baseUrl)) return { err: true, msg: "Invalid path" };
+    try {
+        console.log("Downloading file:", req.query.path);
+        downloadFile(req.query.path, req.query.token);
+        return { err: false, msg: "File downloaded" };
+    } catch (error) {
+        res.status(500);
+        console.error(error);
+        return { err: true, msg: "Internal server error" };
     }
 });
+
+await waitToStart();
+const window = openWindow(baseUrl + `app/zhiva.html?port=${port}`);
+window.on("close", () => process.exit(0));
