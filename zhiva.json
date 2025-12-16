@@ -1,5 +1,6 @@
 {
     "icon": "public/favicon.png",
+    "win_icon": "public/favicon.ico",
     "name": "Sol Mail",
     "description": "Sol Mail Desktop Client",
     "version": "0.0.2",
