@@ -1,6 +1,6 @@
 # Sol Mail Client
 
-[![Install via Zhiva](https://img.shields.io/badge/Zhiva-install-blue)](zhiva://install/sol-mail-client)
+[![Install via Zhiva](https://img.shields.io/badge/Zhiva-install-blue)](https://wxn0brp.github.io/Zhiva-page/i#app=sol-mail-client)
 
 A minimalist desktop mail client built with Electron that automatically discovers and connects to a Sol Mail server on your local network.
 
