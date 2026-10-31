@@ -1,0 +1,30 @@
+id: wxn0brP/sol-mail-client
+
+build:
+    cmd: ""
+
+files:
+    - "public"
+    - "LICENSE"
+    - "README.md"
+    - "package.json"
+    - "tsconfig.json"
+    - "zhiva.json"
+
+output:
+    name: "sol-mail"
+    dir: "./releases"
+
+define:
+
+linux:
+    format:
+        - "tar.gz"
+
+win32:
+    format:
+        - "zip"
+
+darwin:
+    format:
+        - "tar.gz"

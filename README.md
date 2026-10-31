@@ -2,7 +2,7 @@
 
 [![Install via Zhiva](https://img.shields.io/badge/Zhiva-install-blue)](https://wxn0brp.github.io/Zhiva-page/i#app=sol-mail-client)
 
-A minimalist desktop mail client built with Electron that automatically discovers and connects to a Sol Mail server on your local network.
+A minimalist desktop mail client built with Bun and Zhiva that automatically discovers and connects to a Sol Mail server on your local network.
 
 [Screenshots](./screenshots.md)
 
@@ -13,11 +13,14 @@ Once connected, it provides a simple and efficient interface for sending and rec
 
 ## Downloads
 
-Pre-built binaries are available from the [Releases page](https://github.com/wxn0brP/sol-mail/releases).  
-Select the version compatible with your operating system:
+Pre-built packages are available from the [Releases page](https://github.com/wxn0brP/sol-mail-client/releases).  
+Select the package compatible with your operating system:
 
-- **Windows:** `.exe` / `.zip`  
-- **Linux:** `.tar.gz`  
+- **Windows:** `sol-mail-win32.zip` (unpack and run `Sol-Mail.exe`)
+- **Linux:** `sol-mail-linux.tar.gz`
+- **macOS:** `sol-mail-darwin.tar.gz`
+
+You can also install the app through [Zhiva](https://wxn0brp.github.io/Zhiva-page/i#app=sol-mail-client).
 
 ## Original Repository
 
