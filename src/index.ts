@@ -53,5 +53,5 @@ app.get("/download", (req, res) => {
 });
 
 await waitToStart();
-const window = openWindow(baseUrl + `app/zhiva.html?port=${port}`);
+const window = openWindow(baseUrl + `zhiva.html?port=${port}`);
 window.on("close", () => process.exit(0));
