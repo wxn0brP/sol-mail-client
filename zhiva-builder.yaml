@@ -15,7 +15,7 @@ output:
     name: "sol-mail"
     dir: "./releases"
 
-define:
+assets: false
 
 linux:
     format:
