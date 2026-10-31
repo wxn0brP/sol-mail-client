@@ -28,3 +28,4 @@ win32:
 darwin:
     format:
         - "tar.gz"
+    arch: "arm64"
