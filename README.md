@@ -16,7 +16,8 @@ Once connected, it provides a simple and efficient interface for sending and rec
 Pre-built packages are available from the [Releases page](https://github.com/wxn0brP/sol-mail-client/releases).  
 Select the package compatible with your operating system:
 
-- **Windows:** `sol-mail-win32.zip` (unpack and run `Sol-Mail.exe`)
+- **Windows (installer):** `sol-mail-installer.exe` (single-file installer that sets up Zhiva and the app automatically)
+- **Windows (portable):** `sol-mail-win32.zip` (unpack and run `Sol-Mail.exe`)
 - **Linux:** `sol-mail-linux.tar.gz`
 - **macOS:** `sol-mail-darwin.tar.gz`
 

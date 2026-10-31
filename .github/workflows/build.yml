@@ -36,3 +36,15 @@ jobs:
           tags: "true"
           nightly: "latest"
           checkout: "false"
+
+  windows-installer:
+    needs: build
+    permissions:
+      contents: write
+    uses: wxn0brP/Zhiva-windows/.github/workflows/release.yml@master
+    with:
+      name: "sol-mail-client"
+      file_name: "sol-mail-installer"
+      icon: "app.ico"
+      release_tag: ${{ github.ref_type == 'tag' && github.ref_name || 'latest' }}
+
