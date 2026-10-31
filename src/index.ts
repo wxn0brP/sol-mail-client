@@ -1,35 +1,55 @@
 import { findServer } from "./findPort";
-import { app, oneWindow, port, waitToStart } from "@wxn0brp/zhiva-base-lib/server";
+import {
+	app,
+	oneWindow,
+	port,
+	waitToStart,
+} from "@wxn0brp/zhiva-base-lib/server";
 import { openWindow } from "@wxn0brp/zhiva-base-lib/openWindow";
 import { downloadFile } from "./download";
 
 const serverIP = await findServer(19851);
 if (!serverIP) {
-    app.static("public");
-    await oneWindow();
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    process.exit(0);
+	app.static("public");
+	await oneWindow();
+	await new Promise(resolve => setTimeout(resolve, 5000));
+	process.exit(0);
 }
 
 const baseUrl = "http://" + serverIP + ":19851/";
-app.setOrigin([baseUrl])
+app.setOrigin([
+	baseUrl,
+]);
 
 app.get("/download", (req, res) => {
-    const path = req.query.path;
-    if (!path || !req.query.token) {
-        res.status(400);
-        return { err: true, msg: "Bad request" };
-    }
-    if (!path.startsWith(baseUrl)) return { err: true, msg: "Invalid path" };
-    try {
-        console.log("Downloading file:", req.query.path);
-        downloadFile(req.query.path, req.query.token);
-        return { err: false, msg: "File downloaded" };
-    } catch (error) {
-        res.status(500);
-        console.error(error);
-        return { err: true, msg: "Internal server error" };
-    }
+	const path = req.query.path;
+	if (!path || !req.query.token) {
+		res.status(400);
+		return {
+			err: true,
+			msg: "Bad request",
+		};
+	}
+	if (!path.startsWith(baseUrl))
+		return {
+			err: true,
+			msg: "Invalid path",
+		};
+	try {
+		console.log("Downloading file:", req.query.path);
+		downloadFile(req.query.path, req.query.token);
+		return {
+			err: false,
+			msg: "File downloaded",
+		};
+	} catch (error) {
+		res.status(500);
+		console.error(error);
+		return {
+			err: true,
+			msg: "Internal server error",
+		};
+	}
 });
 
 await waitToStart();
