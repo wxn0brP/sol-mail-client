@@ -45,6 +45,6 @@ jobs:
     with:
       name: "sol-mail-client"
       file_name: "sol-mail-installer"
-      icon: "app.ico"
+      icon: "public/favicon.ico"
       release_tag: ${{ github.ref_type == 'tag' && github.ref_name || 'latest' }}
 
