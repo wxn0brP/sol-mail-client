@@ -1,0 +1,32 @@
+# Sol Mail Client
+
+[![Install via Zhiva](https://img.shields.io/badge/Zhiva-install-blue)](https://wxn0brp.github.io/Zhiva-page/i#app=sol-mail-client)
+
+A minimalist desktop mail client built with Bun and Zhiva that automatically discovers and connects to a Sol Mail server on your local network.
+
+[Screenshots](./screenshots.md)
+
+## Overview
+
+Sol Mail Client automatically scans your local network to find the Sol Mail server, typically running on port `19851`.  
+Once connected, it provides a simple and efficient interface for sending and receiving mail through your server.
+
+## Downloads
+
+Pre-built packages are available from the [Releases page](https://github.com/wxn0brP/sol-mail-client/releases).  
+Select the package compatible with your operating system:
+
+- **Windows (installer):** `sol-mail-installer.exe` (single-file installer that sets up Zhiva and the app automatically)
+- **Windows (portable):** `sol-mail-win32.zip` (unpack and run `Sol-Mail.exe`)
+- **Linux:** `sol-mail-linux.tar.gz`
+- **macOS:** `sol-mail-darwin.tar.gz`
+
+You can also install the app through [Zhiva](https://wxn0brp.github.io/Zhiva-page/i#app=sol-mail-client).
+
+## Original Repository
+
+This client is based on the original project: [wxn0brP/sol-mail](https://github.com/wxn0brP/sol-mail)
+
+## License
+
+MIT License

@@ -1,0 +1,22 @@
+{
+	"name": "sol-mail",
+	"version": "0.0.2",
+	"main": "src/index.ts",
+	"type": "module",
+	"license": "MIT",
+	"author": "wxn0brP",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wxn0brP/sol-mail-client.git"
+	},
+	"homepage": "https://github.com/wxn0brP/sol-mail",
+	"scripts": {
+		"start": "bun run src/index.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "*",
+		"@wxn0brp/biome": "*",
+		"@wxn0brp/zhiva-base-lib": "github:wxn0brP/Zhiva-base-lib",
+		"typescript": "^7"
+	}
+}
